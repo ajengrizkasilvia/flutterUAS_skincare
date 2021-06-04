@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "277325186597",
+    "project_id": "flutterskincare",
+    "storage_bucket": "flutterskincare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277325186597:android:c2319f40091f306a69a1cc",
+        "android_client_info": {
+          "package_name": "com.example.flutter_skincare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277325186597-8te71japell1bh6alaio679r48r8nru7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_skincare",
+            "certificate_hash": "b28db8e8c5d82e3b5f47175a341d1e80efda0196"
+          }
+        },
+        {
+          "client_id": "277325186597-74or37o23qe6vp81v5cp0sconbpigg5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxjJ6eybe9q419p0XFAzzK38XCpQW1yoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277325186597-74or37o23qe6vp81v5cp0sconbpigg5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
