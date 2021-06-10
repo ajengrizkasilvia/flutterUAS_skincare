@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_skincare/database/item.dart';
 
 class EntryForm extends StatefulWidget {
   @override
@@ -7,17 +9,28 @@ class EntryForm extends StatefulWidget {
 
 //class controller
 class EntryFormState extends State<EntryForm> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController brandController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  TextEditingController kodeController = TextEditingController();
-  TextEditingController stokController = TextEditingController();
+  final TextEditingController namaController = TextEditingController();
+  final TextEditingController brandController = TextEditingController();
+  final TextEditingController hargaController = TextEditingController();
+  final TextEditingController kodeController = TextEditingController();
+  final TextEditingController kategoriController = TextEditingController();
+  CollectionReference _produk =
+      FirebaseFirestore.instance.collection('Produk');
+
+  void clearInputText() {
+    namaController.text = "";
+    brandController.text = "";
+    hargaController.text = "";
+    kodeController.text = "";
+    kategoriController.text = "";
+  }
 
   @override
   Widget build(BuildContext context) {
     //rubah
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.pink[100],
           leading: Icon(Icons.keyboard_arrow_left),
         ),
         body: Padding(
@@ -28,10 +41,10 @@ class EntryFormState extends State<EntryForm> {
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: nameController,
+                  controller: namaController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Nama Barang',
+                    labelText: 'Nama Produk',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -49,7 +62,7 @@ class EntryFormState extends State<EntryForm> {
                   controller: brandController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Brand Barang',
+                    labelText: 'Brand Produk',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -64,10 +77,10 @@ class EntryFormState extends State<EntryForm> {
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: priceController,
+                  controller: hargaController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    labelText: 'Harga',
+                    labelText: 'Harga Produk',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -85,7 +98,7 @@ class EntryFormState extends State<EntryForm> {
                   controller: kodeController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Kode Barang',
+                    labelText: 'Kode Produk',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -100,10 +113,10 @@ class EntryFormState extends State<EntryForm> {
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: stokController,
-                  keyboardType: TextInputType.number,
+                  controller: kategoriController,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Stok',
+                    labelText: 'Kategori Produk',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -128,12 +141,21 @@ class EntryFormState extends State<EntryForm> {
                           'Save',
                           textScaleFactor: 1.5,
                         ),
-                        onPressed: () {
-                          //
-                        },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)
                           ),
+                        onPressed: () async {
+                              // TODO 1 ADD DATA HERE
+                              await _produk.add({
+                                "nama": namaController.text,
+                                "brand": brandController.text,
+                                "harga": double.tryParse(hargaController.text),
+                                "kode": kodeController.text,
+                                "kategori": kategoriController.text,
+                              });
+                              clearInputText();
+                              Navigator.pop(context);
+                         }
                       ),
                     ),
                     Container(

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'pages/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_skincare/pages/login_page.dart';
+//import 'pages/login_page.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,7 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: 
+      //MainPage(),
+      LoginPage(),
     );
   }
 }

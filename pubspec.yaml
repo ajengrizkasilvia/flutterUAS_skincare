@@ -25,7 +25,9 @@ dependencies:
     sdk: flutter
   firebase_auth: any
   google_sign_in: any
-  firebase_core: ^1.2.0
+  firebase_core: any
+  cloud_firestore: any
+
   
 
 
@@ -55,7 +57,6 @@ flutter:
     - assets/icons/
     - assets/images/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

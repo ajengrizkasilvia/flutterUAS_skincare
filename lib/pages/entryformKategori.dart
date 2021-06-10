@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EntryFormKategori extends StatefulWidget {
   @override
@@ -7,13 +8,21 @@ class EntryFormKategori extends StatefulWidget {
 
 //class controller
 class EntryFormKategoriState extends State<EntryFormKategori> {
-  TextEditingController kategoriController = TextEditingController();
-  TextEditingController tipewajahController = TextEditingController();
+  final TextEditingController kategoriController = TextEditingController();
+  final TextEditingController tipewajahController = TextEditingController();
+  CollectionReference _kategori =
+      FirebaseFirestore.instance.collection('Kategori');
+
+  void clearInputText() {
+    kategoriController.text = "";
+    tipewajahController.text = "";
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.pink[100],
           leading: Icon(Icons.keyboard_arrow_left),
         ),
         body: Padding(
@@ -70,12 +79,19 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
                           'Save',
                           textScaleFactor: 1.5,
                         ),
-                        onPressed: () {
-                          //
-                        },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)
                           ),
+                        onPressed: () async {
+                              // TODO 1 ADD DATA HERE
+                              await _kategori.add({
+                                "kategori": kategoriController.text,
+                                "tipewajah" : tipewajahController.text,
+                              });
+                              clearInputText();
+                              Navigator.pop(context);
+                         }
+                        
                       ),
                     ),
                     Container(

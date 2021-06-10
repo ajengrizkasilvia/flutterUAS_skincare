@@ -1,14 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_skincare/pages/komponen/body.dart';
 import 'package:flutter_skincare/pages/mainhome.dart';
 import 'package:flutter_skincare/pages/login_page.dart';
 import 'package:flutter_skincare/pages/sign_in.dart';
-
+import 'komponen/body.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +29,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+      body: Body(),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -89,10 +93,11 @@ class _HomePageState extends State<HomePage> {
               title: Text("Log Out"),
               onTap: () {
                 signOutGoogle();
-                Navigator.of(context).pushAndRemoveUntil(
+                Navigator.of(context).pushAndRemoveUntil( //utk mengambil kembali kemudian di push
                     MaterialPageRoute(builder: (context) {
                   return LoginPage();
-                }), ModalRoute.withName('/'));
+                }), ModalRoute.withName('/')
+                );
               },
             ),
           ],
