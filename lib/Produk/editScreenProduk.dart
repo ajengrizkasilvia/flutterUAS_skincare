@@ -6,7 +6,7 @@ class EditScreenProduk extends StatefulWidget {
   final String currentKode;
   final String currentNama;
   final String currentBrand;
-  final String currentHarga;
+  final int currentHarga;
   final String currentKategori;
   final String documentId;
 
@@ -46,8 +46,8 @@ class _EditScreenProdukState extends State<EditScreenProduk> {
         // backgroundColor: CustomColors.firebaseNavy,
         appBar: AppBar(
           elevation: 0,
-          // backgroundColor: CustomColors.firebaseNavy,
-          // title: AppBarTitle(),
+          backgroundColor: Colors.pink[100],
+          title: Text('Edit Form Produk'),
           actions: [
             _isDeleting
                 ? Padding(

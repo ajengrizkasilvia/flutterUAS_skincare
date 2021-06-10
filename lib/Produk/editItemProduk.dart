@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_skincare/database/dbKategori.dart';
 import 'package:flutter_skincare/database/dbProduk.dart';
 import 'customFormFieldProduk.dart';
 
+//EDIT FORM PRODUK
 class EditItemForm extends StatefulWidget {
   final FocusNode kodeFocusNode;
   final FocusNode namaFocusNode;
@@ -12,7 +12,7 @@ class EditItemForm extends StatefulWidget {
   final String currentKode;
   final String currentNama;
   final String currentBrand;
-  final String currentHarga;
+  final int currentHarga;
   final String currentKategori;
   final String documentId;
 
@@ -57,7 +57,7 @@ class _EditItemFormState extends State<EditItemForm> {
       text: widget.currentBrand,
     );
     _hargaController= TextEditingController(
-      text: widget.currentHarga,
+      text: widget.currentHarga.toString(),
     );
     _kategoriController = TextEditingController(
       text: widget.currentKategori,
@@ -80,12 +80,12 @@ class _EditItemFormState extends State<EditItemForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 24.0),
+                SizedBox(height: 16.0),
                 Text(
                   'Kode',
                   style: TextStyle(
                     // color: CustomColors.firebaseGrey,
-                    fontSize: 22.0,
+                    fontSize: 16.0,
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
                   ),
@@ -103,12 +103,12 @@ class _EditItemFormState extends State<EditItemForm> {
                   label: 'Kode',
                   hint: 'Enter Kode',
                 ),
-                SizedBox(height: 24.0),
+                SizedBox(height: 16.0),
                 Text(
                   'Nama Produk',
                   style: TextStyle(
                     // color: CustomColors.firebaseGrey,
-                    fontSize: 22.0,
+                    fontSize: 16.0,
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
                   ),
@@ -126,12 +126,12 @@ class _EditItemFormState extends State<EditItemForm> {
                   label: 'Nama Produk',
                   hint: 'Enter Nama Produk',
                 ),
-                SizedBox(height: 24.0),
+                SizedBox(height: 16.0),
                 Text(
                   'Brand',
                   style: TextStyle(
                     // color: CustomColors.firebaseGrey,
-                    fontSize: 22.0,
+                    fontSize: 16.0,
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
                   ),
@@ -149,12 +149,12 @@ class _EditItemFormState extends State<EditItemForm> {
                   label: 'Brand',
                   hint: 'Enter Brand',
                 ),
-                SizedBox(height: 24.0),
+                SizedBox(height: 16.0),
                 Text(
                   'Harga',
                   style: TextStyle(
                     // color: CustomColors.firebaseGrey,
-                    fontSize: 22.0,
+                    fontSize: 16.0,
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
                   ),
@@ -172,12 +172,12 @@ class _EditItemFormState extends State<EditItemForm> {
                   label: 'Harga',
                   hint: 'Enter Harga',
                 ),
-                SizedBox(height: 24.0),
+                SizedBox(height: 16.0),
                 Text(
                   'Kategori',
                   style: TextStyle(
                     // color: CustomColors.firebaseGrey,
-                    fontSize: 22.0,
+                    fontSize: 16.0,
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
                   ),
@@ -237,7 +237,7 @@ class _EditItemFormState extends State<EditItemForm> {
                           kode: _kodeController.text,
                           nama: _namaController.text,
                           brand: _brandController.text,
-                          harga: _hargaController.text,
+                          harga: int.parse(_hargaController.text),
                           kategori: _kategoriController.text,
                         );
 
@@ -249,11 +249,11 @@ class _EditItemFormState extends State<EditItemForm> {
                       }
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
+                      padding: EdgeInsets.only(top: 12.0, bottom: 14.0),
                       child: Text(
                         'UPDATE PRODUK',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           // color: CustomColors.firebaseGrey,
                           letterSpacing: 2,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_skincare/database/dbKategori.dart';
 import 'customFormFieldKat.dart';
 
+//FORM ADD KATEGORI
 class AddKategori extends StatefulWidget {
   final FocusNode kategoriFocusNode;
   final FocusNode tipewajahFocusNode;
@@ -39,44 +40,79 @@ class _AddKategoriState extends State<AddKategori> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 24.0),
-                Text(
-                  'Kategori',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  isLabelEnabled: false,
+                // kategori
+              Padding(
+                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                child: TextField(
                   controller: _kategoriController,
-                  focusNode: widget.kategoriFocusNode,
                   keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.next,
-                  label: 'Kategori',
-                  hint: 'Enter Kategori',
-                ),
-                SizedBox(height: 24.0),
-                Text(
-                  'Tipe Wajah',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
+                  decoration: InputDecoration(
+                    labelText: 'Kategori Skincare',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
+                  onChanged: (value) {
+                    //
+                  },
                 ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  maxLines: 10,
-                  isLabelEnabled: false,
+              ),
+              // tipe wajah
+              Padding(
+                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                child: TextField(
                   controller: _tipewajahController,
-                  focusNode: widget.tipewajahFocusNode,
                   keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.done,
-                  label: 'Tipe Wajah',
-                  hint: 'Enter Tipe Wajah',
+                  decoration: InputDecoration(
+                    labelText: 'Tipe Wajah',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    //
+                  },
                 ),
+              ),
+
+                // Text(
+                //   'Kategori',
+                //   style: TextStyle(
+                //     fontSize: 22.0,
+                //     letterSpacing: 1,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomFormField(
+                //   isLabelEnabled: false,
+                //   controller: _kategoriController,
+                //   focusNode: widget.kategoriFocusNode,
+                //   keyboardType: TextInputType.text,
+                //   inputAction: TextInputAction.next,
+                //   label: 'Kategori',
+                //   hint: 'Enter Kategori',
+                // ),
+                // SizedBox(height: 24.0),
+                // Text(
+                //   'Tipe Wajah',
+                //   style: TextStyle(
+                //     fontSize: 22.0,
+                //     letterSpacing: 1,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomFormField(
+                //   maxLines: 10,
+                //   isLabelEnabled: false,
+                //   controller: _tipewajahController,
+                //   focusNode: widget.tipewajahFocusNode,
+                //   keyboardType: TextInputType.text,
+                //   inputAction: TextInputAction.done,
+                //   label: 'Tipe Wajah',
+                //   hint: 'Enter Tipe Wajah',
+                // ),
               ],
             ),
           ),
@@ -119,7 +155,7 @@ class _AddKategoriState extends State<AddKategori> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
                       child: Text(
-                        'ADD ITEM',
+                        'Add Kategori',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,

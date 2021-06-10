@@ -15,11 +15,11 @@ class AddScreen extends StatelessWidget {
       },
       child: Scaffold(
         // backgroundColor: CustomColors.firebaseNavy,
-        // appBar: AppBar(
-        //   elevation: 0,
-        //   backgroundColor: CustomColors.firebaseNavy,
-        //   title: AppBarTitle(),
-        // ),
+        appBar: AppBar(
+           elevation: 0,
+           backgroundColor: Colors.pink[100],
+           title: Text('Tambah Data Kategori'),
+        ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(

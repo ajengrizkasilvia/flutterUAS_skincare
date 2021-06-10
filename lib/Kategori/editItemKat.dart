@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_skincare/database/dbKategori.dart';
 import 'customFormFieldKat.dart';
 
+
+//FORM EDIT KATEGORI
 class EditItemForm extends StatefulWidget {
   final FocusNode kategoriFocusNode;
   final FocusNode tipewajahFocusNode;

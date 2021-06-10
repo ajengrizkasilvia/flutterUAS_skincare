@@ -4,12 +4,12 @@ import 'package:flutter_skincare/Produk/addScreenProduk.dart';
 import 'itemProdukList.dart';
 
 //pendukung program asinkron
-class HomeKat extends StatefulWidget {
+class HomeProduk extends StatefulWidget {
   @override
-  HomeKatState createState() => HomeKatState();
+  HomeProdukState createState() => HomeProdukState();
 }
 
-class HomeKatState extends State<HomeKat> {
+class HomeProdukState extends State<HomeProduk> {
   @override
   CollectionReference _produk =
       FirebaseFirestore.instance.collection('ProdukSkincare');
@@ -29,11 +29,11 @@ class HomeKatState extends State<HomeKat> {
             ),
           );
         },
-        // backgroundColor: CustomColors.firebaseOrange,
+        backgroundColor: Colors.blue[300],
         child: Icon(
           Icons.add,
           color: Colors.white,
-          size: 32,
+          size: 40,
         ),
       ),
       body: SafeArea(

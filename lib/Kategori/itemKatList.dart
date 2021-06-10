@@ -21,11 +21,9 @@ class ItemListKategori extends StatelessWidget {
               String kategori = noteInfo['kategori'];
               String tipewajah = noteInfo['tipewajah'];
 
-              return Ink(
-                decoration: BoxDecoration(
-                  // color: CustomColors.firebaseGrey.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
+              return Card(
+                color: Colors.white,
+                elevation: 3,
                 child: ListTile(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
@@ -40,12 +38,12 @@ class ItemListKategori extends StatelessWidget {
                     ),
                   ),
                   title: Text(
-                    kategori,
+                    "Kategori  : " +kategori,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   subtitle: Text(
-                    tipewajah,
+                    "Tipe Wajah:" +tipewajah,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_skincare/Kategori/homeKat.dart';
+import 'package:flutter_skincare/Produk/homeProduk.dart';
 import 'package:flutter_skincare/pages/home_page.dart';
 import 'package:flutter_skincare/pages/login_page.dart';
 import 'package:flutter_skincare/pages/sign_in.dart';
@@ -106,7 +107,7 @@ class MainHome extends StatelessWidget {
               body: 
               TabBarView(
                 children: [
-                  Home(),
+                  HomeProduk(),
                   HomeKat(),
                 ],
               ),

@@ -21,14 +21,16 @@ class ItemListProduk extends StatelessWidget {
               String kode = noteInfo['kode'];
               String nama = noteInfo['nama'];
               String brand = noteInfo['brand'];
-              String harga = noteInfo['harga'];
+              int harga = noteInfo['harga'];
               String kategori = noteInfo['kategori'];
 
-              return Ink(
-                decoration: BoxDecoration(
-                  // color: CustomColors.firebaseGrey.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
+              return Card(
+                // decoration: BoxDecoration(
+                //   // color: CustomColors.firebaseGrey.withOpacity(0.1),
+                //   borderRadius: BorderRadius.circular(8.0),
+                // ),
+                color: Colors.white,
+                elevation: 3,
                 child: ListTile(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
@@ -46,13 +48,16 @@ class ItemListProduk extends StatelessWidget {
                     ),
                   ),
                   title: Text(
-                    kode,
+                    "Kode                 " + kode,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   subtitle: Text(
-                    nama,
-                    maxLines: 1,
+                    "Nama Produk     : " + nama + 
+                    "\nBrand Produk     : " + brand  + 
+                    "\nHarga Produk     : " + '$harga' +
+                    "\nKategori Produk : " +kategori, 
+                    maxLines: 4,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

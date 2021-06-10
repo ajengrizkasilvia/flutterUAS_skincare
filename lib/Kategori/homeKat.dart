@@ -29,11 +29,11 @@ class HomeKatState extends State<HomeKat> {
             ),
           );
         },
-        // backgroundColor: CustomColors.firebaseOrange,
+        backgroundColor: Colors.blue[300],
         child: Icon(
           Icons.add,
           color: Colors.white,
-          size: 32,
+          size: 40,
         ),
       ),
       body: SafeArea(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_skincare/database/dbProduk.dart';
 import 'customFormFieldProduk.dart';
 
+//FORM ADD PRODUK
 class AddProduk extends StatefulWidget {
   final FocusNode kodeFocusNode;
   final FocusNode namaFocusNode;
@@ -47,101 +48,186 @@ class _AddKategoriState extends State<AddProduk> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 24.0),
-                Text(
-                  'Kode',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
+                // Kode Barang
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: TextField(
+                    controller: _kodeController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Kode Produk',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      //
+                    },
                   ),
                 ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  isLabelEnabled: false,
-                  controller: _kodeController,
-                  focusNode: widget.kodeFocusNode,
-                  keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.next,
-                  label: 'Kode',
-                  hint: 'Enter Kode',
-                ),
-                SizedBox(height: 24.0),
-                Text(
-                  'Nama Produk',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
+                // nama
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: TextField(
+                    controller: _namaController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Nama Produk',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      //
+                    },
                   ),
                 ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  isLabelEnabled: false,
-                  controller: _namaController,
-                  focusNode: widget.namaFocusNode,
-                  keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.next,
-                  label: 'Nama',
-                  hint: 'Enter Nama Produk',
-                ),
-                SizedBox(height: 24.0),
-                Text(
-                  'Brand',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
+                // brand
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: TextField(
+                    controller: _brandController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Brand Produk',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      //
+                    },
                   ),
                 ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  isLabelEnabled: false,
-                  controller: _brandController,
-                  focusNode: widget.brandFocusNode,
-                  keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.next,
-                  label: 'Brand',
-                  hint: 'Enter Brand Produk',
-                ),
-                SizedBox(height: 24.0),
-                Text(
-                  'Harga',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
+                // harga
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: TextField(
+                    controller: _hargaController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Harga Produk',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      //
+                    },
                   ),
                 ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  isLabelEnabled: false,
-                  controller: _hargaController,
-                  focusNode: widget.hargaFocusNode,
-                  keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.next,
-                  label: 'Harga',
-                  hint: 'Enter Harga',
-                ),
-                SizedBox(height: 24.0),
-                Text(
-                  'Kategori',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
+                // kategori
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: TextField(
+                    controller: _kategoriController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Kategori Produk',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      //
+                    },
                   ),
                 ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  isLabelEnabled: false,
-                  controller: _kategoriController,
-                  focusNode: widget.kategoriFocusNode,
-                  keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.next,
-                  label: 'Kategori',
-                  hint: 'Enter Kategori',
-                ),
+                // SizedBox(height: 18.0),
+                // Text(
+                //   'Kode',
+                //   style: TextStyle(
+                //     fontSize: 18.0,
+                //     letterSpacing: 1,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomFormField(
+                //   isLabelEnabled: false,
+                //   controller: _kodeController,
+                //   focusNode: widget.kodeFocusNode,
+                //   keyboardType: TextInputType.text,
+                //   inputAction: TextInputAction.next,
+                //   label: 'Kode',
+                //   hint: 'Enter Kode',
+                // ),
+                // SizedBox(height: 18.0),
+                // Text(
+                //   'Nama Produk',
+                //   style: TextStyle(
+                //     fontSize: 18.0,
+                //     letterSpacing: 1,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomFormField(
+                //   isLabelEnabled: false,
+                //   controller: _namaController,
+                //   focusNode: widget.namaFocusNode,
+                //   keyboardType: TextInputType.text,
+                //   inputAction: TextInputAction.next,
+                //   label: 'Nama',
+                //   hint: 'Enter Nama Produk',
+                // ),
+                // SizedBox(height: 18.0),
+                // Text(
+                //   'Brand',
+                //   style: TextStyle(
+                //     fontSize: 18.0,
+                //     letterSpacing: 1,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomFormField(
+                //   isLabelEnabled: false,
+                //   controller: _brandController,
+                //   focusNode: widget.brandFocusNode,
+                //   keyboardType: TextInputType.text,
+                //   inputAction: TextInputAction.next,
+                //   label: 'Brand',
+                //   hint: 'Enter Brand Produk',
+                // ),
+                // SizedBox(height: 18.0),
+                // Text(
+                //   'Harga',
+                //   style: TextStyle(
+                //     fontSize: 18.0,
+                //     letterSpacing: 1,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomFormField(
+                //   isLabelEnabled: false,
+                //   controller: _hargaController,
+                //   focusNode: widget.hargaFocusNode,
+                //   keyboardType: TextInputType.text,
+                //   inputAction: TextInputAction.next,
+                //   label: 'Harga',
+                //   hint: 'Enter Harga',
+                // ),
+                // SizedBox(height: 18.0),
+                // Text(
+                //   'Kategori',
+                //   style: TextStyle(
+                //     fontSize: 18.0,
+                //     letterSpacing: 1,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomFormField(
+                //   isLabelEnabled: false,
+                //   controller: _kategoriController,
+                //   focusNode: widget.kategoriFocusNode,
+                //   keyboardType: TextInputType.text,
+                //   inputAction: TextInputAction.next,
+                //   label: 'Kategori',
+                //   hint: 'Enter Kategori',
+                // ),
               ],
             ),
           ),
@@ -176,7 +262,7 @@ class _AddKategoriState extends State<AddProduk> {
                           kode: _kodeController.text,
                           nama: _namaController.text,
                           brand: _brandController.text,
-                          harga: _hargaController.text,
+                          harga: int.parse(_hargaController.text),
                           kategori: _kategoriController.text,
                          );
 
@@ -190,9 +276,9 @@ class _AddKategoriState extends State<AddProduk> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
                       child: Text(
-                        'ADD Produk',
+                        'Add Produk',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 2,
                         ),

@@ -19,7 +19,6 @@ class EditScreenKategori extends StatefulWidget {
 
 class _EditScreenKategoriState extends State<EditScreenKategori> {
   final FocusNode _kategoriFocusNode = FocusNode();
-
   final FocusNode _tipewajahFocusNode = FocusNode();
 
   bool _isDeleting = false;
@@ -35,8 +34,8 @@ class _EditScreenKategoriState extends State<EditScreenKategori> {
         // backgroundColor: CustomColors.firebaseNavy,
         appBar: AppBar(
           elevation: 0,
-          // backgroundColor: CustomColors.firebaseNavy,
-          // title: AppBarTitle(),
+          backgroundColor: Colors.pink[100],
+          title: Text('Edit Form Kategori'),
           actions: [
             _isDeleting
                 ? Padding(
@@ -47,7 +46,7 @@ class _EditScreenKategoriState extends State<EditScreenKategori> {
                     ),
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        Colors.redAccent,
+                        Colors.black,
                       ),
                       strokeWidth: 3,
                     ),
@@ -55,7 +54,7 @@ class _EditScreenKategoriState extends State<EditScreenKategori> {
                 : IconButton(
                     icon: Icon(
                       Icons.delete,
-                      color: Colors.redAccent,
+                      color: Colors.black,
                       size: 32,
                     ),
                     onPressed: () async {

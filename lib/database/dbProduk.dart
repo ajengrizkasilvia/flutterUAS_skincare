@@ -7,7 +7,8 @@ class DatabaseProduk {
   static String userUid;
   
   static Future<void> addItem({
-    String kode, nama, brand, harga, kategori,
+    String kode, nama, brand, kategori,
+    int harga,
   }) async {
     DocumentReference documentReferencer =
         _mainCollection.doc(userUid);
@@ -27,11 +28,12 @@ class DatabaseProduk {
   }
 
   static Future<void> updateItem({
-    String kode, nama, brand, harga, kategori,
+    String kode, nama, brand, kategori,
+    int harga,
     String docId,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(userUid);
+        _mainCollection.doc(docId);
 
     Map<String, dynamic> data = <String, dynamic>{
       "kode": kode,
@@ -58,7 +60,7 @@ class DatabaseProduk {
     String docId,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(userUid);
+        _mainCollection.doc(docId);
 
     await documentReferencer
         .delete()
