@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_skincare/database/dbKategori.dart';
 import 'package:flutter_skincare/database/dbProduk.dart';
 import 'customFormFieldProduk.dart';
 
@@ -44,6 +46,7 @@ class _EditItemFormState extends State<EditItemForm> {
   TextEditingController _brandController = TextEditingController();
   TextEditingController _hargaController = TextEditingController();
   TextEditingController _kategoriController = TextEditingController();
+  var selectedCurrency;
 
   @override
   void initState() {
@@ -172,28 +175,59 @@ class _EditItemFormState extends State<EditItemForm> {
                   label: 'Harga',
                   hint: 'Enter Harga',
                 ),
-                SizedBox(height: 16.0),
-                Text(
-                  'Kategori',
-                  style: TextStyle(
-                    // color: CustomColors.firebaseGrey,
-                    fontSize: 16.0,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8.0),
-                CustomFormField(
-                  isLabelEnabled: false,
-                  controller: _kategoriController,
-                  focusNode: widget.kategoriFocusNode,
-                  keyboardType: TextInputType.text,
-                  inputAction: TextInputAction.done,
-                  // validator: (value) => Validator.validateField(
-                  //   value: value,
-                  // ),
-                  label: 'Kategori',
-                  hint: 'Enter Kategori',
+                // 
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: StreamBuilder<QuerySnapshot>(
+                      stream: DatabaseKategori.readItems(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData)
+                          const Text("Loading.....");
+                        else {
+                          List<DropdownMenuItem> currencyItems = [];
+                          for (int i = 0; i < snapshot.data.docs.length; i++) {
+                            var snap = snapshot.data.docs[i].data();
+                            String nama = snap['kategori'];
+                            currencyItems.add(
+                              DropdownMenuItem(
+                                child: Text(
+                                  nama,
+                                  style: TextStyle(color: Colors.blue),
+                                ),
+                                value: "${nama}",
+                              ),
+                            );
+                          }
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(width: 50.0),
+                              DropdownButton(
+                                items: currencyItems,
+                                onChanged: (currencyValue) {
+                                  final snackBar = SnackBar(
+                                    content: Text(
+                                      'Selected Currency value is $currencyValue',
+                                      style:
+                                          TextStyle(color: Colors.blue),
+                                    ),
+                                  );
+                                  Scaffold.of(context).showSnackBar(snackBar);
+                                  setState(() {
+                                    selectedCurrency = currencyValue;
+                                  });
+                                },
+                                value: selectedCurrency,
+                                isExpanded: false,
+                                hint: new Text(
+                                  "Pilih Kategori *type",
+                                  style: TextStyle(color: Colors.pink),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+                      }),
                 ),
               ],
             ),
@@ -238,7 +272,7 @@ class _EditItemFormState extends State<EditItemForm> {
                           nama: _namaController.text,
                           brand: _brandController.text,
                           harga: int.parse(_hargaController.text),
-                          kategori: _kategoriController.text,
+                          kategori: selectedCurrency,
                         );
 
                         setState(() {

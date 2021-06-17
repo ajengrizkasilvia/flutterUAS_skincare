@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 10),
                   Container(
                     child: Text(
-                      name,
+                      _auth.currentUser.email,
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

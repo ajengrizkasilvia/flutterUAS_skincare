@@ -7,7 +7,7 @@ import 'package:flutter_skincare/pages/sign_in.dart';
 import 'produk_page.dart';
 import 'kategori_page.dart';
 
-
+//HOME UNTUK SUB MENU
 class MainHome extends StatelessWidget {
   // This widget is the root of your application.
   @override

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_skincare/database/dbKategori.dart';
 import 'package:flutter_skincare/database/dbProduk.dart';
 import 'customFormFieldProduk.dart';
 
@@ -32,6 +34,7 @@ class _AddKategoriState extends State<AddProduk> {
   final TextEditingController _brandController = TextEditingController();
   final TextEditingController _hargaController = TextEditingController();
   final TextEditingController _kategoriController = TextEditingController();
+  var selectedCurrency;
 
   @override
   Widget build(BuildContext context) {
@@ -117,21 +120,75 @@ class _AddKategoriState extends State<AddProduk> {
                   ),
                 ),
                 // kategori
+                // Padding(
+                //   padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                //   child: TextField(
+                //     controller: _kategoriController,
+                //     keyboardType: TextInputType.text,
+                //     decoration: InputDecoration(
+                //       labelText: 'Kategori Produk',
+                //       border: OutlineInputBorder(
+                //         borderRadius: BorderRadius.circular(5.0),
+                //       ),
+                //     ),
+                //     onChanged: (value) {
+                //       //
+                //     },
+                //   ),
+                // ),
+
                 Padding(
                   padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                  child: TextField(
-                    controller: _kategoriController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      labelText: 'Kategori Produk',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                    onChanged: (value) {
-                      //
-                    },
-                  ),
+                  child: StreamBuilder<QuerySnapshot>(
+                      stream: DatabaseKategori.readItems(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData)
+                          const Text("Loading.....");
+                        else {
+                          List<DropdownMenuItem> currencyItems = [];
+                          for (int i = 0; i < snapshot.data.docs.length; i++) {
+                            var snap = snapshot.data.docs[i].data();
+                            String nama = snap['kategori'];
+                            currencyItems.add(
+                              DropdownMenuItem(
+                                child: Text(
+                                  nama,
+                                  style: TextStyle(color: Colors.blue),
+                                ),
+                                value: "${nama}",
+                              ),
+                            );
+                          }
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(width: 50.0),
+                              DropdownButton(
+                                items: currencyItems,
+                                onChanged: (currencyValue) {
+                                  final snackBar = SnackBar(
+                                    content: Text(
+                                      'Selected Currency value is $currencyValue',
+                                      style:
+                                          TextStyle(color: Colors.blue),
+                                    ),
+                                  );
+                                  Scaffold.of(context).showSnackBar(snackBar);
+                                  setState(() {
+                                    selectedCurrency = currencyValue;
+                                  });
+                                },
+                                value: selectedCurrency,
+                                isExpanded: false,
+                                hint: new Text(
+                                  "Pilih Kategori *type",
+                                  style: TextStyle(color: Colors.pink),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+                      }),
                 ),
                 // SizedBox(height: 18.0),
                 // Text(
@@ -263,7 +320,7 @@ class _AddKategoriState extends State<AddProduk> {
                           nama: _namaController.text,
                           brand: _brandController.text,
                           harga: int.parse(_hargaController.text),
-                          kategori: _kategoriController.text,
+                          kategori: selectedCurrency,
                          );
 
                         setState(() {

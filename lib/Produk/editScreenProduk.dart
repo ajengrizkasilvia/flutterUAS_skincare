@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_skincare/database/dbKategori.dart';
+import 'package:flutter_skincare/database/dbProduk.dart';
 import 'editItemProduk.dart';
 
 class EditScreenProduk extends StatefulWidget {
@@ -74,7 +75,7 @@ class _EditScreenProdukState extends State<EditScreenProduk> {
                         _isDeleting = true;
                       });
 
-                      await DatabaseKategori.deleteItem(
+                      await DatabaseProduk.deleteItem(
                         docId: widget.documentId,
                       );
 
